@@ -1,0 +1,14 @@
+[
+  {
+    "id": "5d200691-e0bd-45f3-aacb-b182200bfb73",
+    "username": "admin",
+    "password": "$2b$10$jQN6g6qyz8tbo4AH/h9DMuMphrd5ueRVKSxV8pjI1xp5eKwiCtEYe",
+    "role": "root_admin"
+  },
+  {
+    "id": "feae22f1-a8a2-4045-a2a3-38173d0a76a7",
+    "username": "ctip",
+    "password": "$2b$10$IFhop21YpwTSZ/v3px.KGuockaJdfT0XiEw5YV8IwBIJ6QnLrwt6m",
+    "role": "user"
+  }
+]
