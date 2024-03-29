@@ -54,12 +54,12 @@ app.get("/menus", async (req, res) => {
       },
       {
         id: 3,
-        authName: "任务",
+        authName: "游记",
         path: "/home/task",
         children: [
           {
             id: 31,
-            authName: "任务详情",
+            authName: "游记详情",
             path: "/home/task",
           },
         ],
@@ -174,6 +174,24 @@ app.post('/assign-role', (req, res) => {
   writeDataToFile('users.json', users);
 
   res.json({ success: true, message: '角色分配成功' });
+});
+
+
+app.get('/all-travel-data', (req, res) => {
+  const allData = readDataFromFile('totalTravelData.json');
+
+  // 提取所需的字段
+  const requiredData = allData.map(({ id, title, user, traffic, img_Intrinsic, isChecked, detail: { summary } }) => ({
+    id,
+    title,
+    user,
+    traffic,
+    img_Intrinsic,
+    isChecked,
+    summary
+  }));
+
+  res.json({ success: true, data: requiredData });
 });
 
 
