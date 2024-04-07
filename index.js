@@ -156,6 +156,7 @@ app.post("/login", async (req, res) => {
     success: true,
     message: "登录成功",
     token: token,
+    role: user.role, 
   });
 });
 
