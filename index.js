@@ -5,7 +5,7 @@ const app = express();
 const axios = require("axios");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-const port = 8080;
+const port = 3001;
 
 const cookieParser = require("cookie-parser");
 const { readDataFromFile, writeDataToFile } = require("./fileDataManager");
@@ -15,8 +15,8 @@ const SECRET_KEY = "ctip_yhr_secret_key"; // 请在生产环境中使用更安�
 const { v4: uuidv4 } = require("uuid");
 
 const corsOptions = {
-  // origin: '*',
-  origin: "http://localhost:3000",
+  origin: '*',
+  // origin: "http://localhost:3000",
   credentials: true,
 };
 app.use(CORS(corsOptions));
@@ -104,7 +104,7 @@ app.post("/register", async (req, res) => {
     id: uuidv4(),
     username,
     password: hashedPassword,
-    role: "root_admin",
+    role: "user",
   };
   users.push(newUser);
 
@@ -156,7 +156,7 @@ app.post("/login", async (req, res) => {
     success: true,
     message: "登录成功",
     token: token,
-    role: user.role, 
+    role: user.role,
   });
 });
 
@@ -211,11 +211,11 @@ app.get("/all-travel-data", (req, res) => {
         img_Intrinsic,
         isChecked,
         summary,
-        imgs
+        imgs,
       };
     }
   );
-
+  // console.log('后端返回的所有的游记数据',requiredData)
   res.json({ success: true, data: requiredData });
 });
 

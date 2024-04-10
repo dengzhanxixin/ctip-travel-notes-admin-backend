@@ -38,7 +38,7 @@
     "showvideoicon": "0",
     "clientAuth": "62528FBC390E3090C9F1ADBEFD02860B",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me0e12000dfrck1x4DAD_D_450_600_R5_Q80.jpg",
-    "isChecked": 2,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
         "poiNames": [
@@ -199,7 +199,7 @@
         "visibleStatus": 0
       }
     },
-    "reason": "123"
+    "reason": "33"
   },
   {
     "id": "33332909",
@@ -239,7 +239,7 @@
     "showvideoicon": "0",
     "clientAuth": "6AA7FFCCDC51C164C13F4EAFCAFA38BA",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me4z12000dg3swa146FF_D_450_600_R5_Q80.jpg",
-    "isChecked": 2,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
         "poiNames": [
@@ -351,7 +351,8 @@
         "isHost": false,
         "visibleStatus": 0
       }
-    }
+    },
+    "reason": "000"
   },
   {
     "id": "34142970",

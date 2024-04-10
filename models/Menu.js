@@ -9,7 +9,6 @@ const menuSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // 可以根据需要添加更多字段
 });
 
 const Menu = mongoose.model("Menu", menuSchema);
