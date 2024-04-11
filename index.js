@@ -2,7 +2,6 @@ const CORS = require("cors");
 const User = require("./models/User");
 const express = require("express");
 const app = express();
-const axios = require("axios");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const port = 3001;
@@ -11,11 +10,38 @@ const cookieParser = require("cookie-parser");
 const { readDataFromFile, writeDataToFile } = require("./fileDataManager");
 
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = "ctip_yhr_secret_key"; // 请在生产环境中使用更安全的密钥
+const SECRET_KEY = "ctip_yhr_secret_key"; // JWT密钥
 const { v4: uuidv4 } = require("uuid");
+const { MongoClient } = require("mongodb");
+const MONGO_URI = "mongodb://localhost:27017"; // MongoDB连接URI
+const DB_NAME = "your_database_name"; // 数据库名称
+// 连接MongoDB数据库
+const client = new MongoClient(MONGO_URI);
+
+// 中间件
+app.use(express.json());
+// 在 Express 应用中添加 CORS 头部
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
+// 连接MongoDB数据库
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log("Connected to the database");
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+  }
+}
+
+connectToDatabase(); // 连接数据库
 
 const corsOptions = {
-  origin: '*',
+  origin: "*",
   // origin: "http://localhost:3000",
   credentials: true,
 };
@@ -83,37 +109,43 @@ app.post("/register", async (req, res) => {
   username = String(username);
   password = String(password);
   console.log(
-    `后端拿到的注册的账号密码 ${
+    `从前端拿到的注册的账号密码 ${JSON.stringify(
       req.body
-    } 账号 ${username} ${typeof username}  密码 ${password} ${typeof password}`
+    )} 账号 ${username} 密码 ${password}`
   );
+  try {
+    const db = client.db(DB_NAME);
+    const usersCollection = db.collection("users");
 
-  const users = readDataFromFile("users.json");
+    // 检查用户是否已存在
+    const existingUser = await usersCollection.findOne({ username });
+    if (existingUser) {
+      console.log("用户已存在");
+      return res.status(400).json({ success: false, message: "用户已存在" });
+    }
 
-  // 检查用户是否已存在
-  const userExists = users.some((user) => user.username === username);
-  if (userExists) {
-    return res.status(400).json({ success: false, message: "用户已存在" });
+    // 对密码进行加密
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // 使用UUID生成唯一的用户id
+    const newUser = {
+      id: uuidv4(),
+      username,
+      password: hashedPassword,
+      role: "user",
+    };
+
+    // 插入新用户到数据库
+    await usersCollection.insertOne(newUser);
+
+    console.log("注册成功");
+    res
+      .status(201)
+      .json({ success: true, message: "注册成功", userId: newUser.id });
+  } catch (error) {
+    console.error("注册失败:", error);
+    res.status(500).json({ success: false, message: "注册失败" });
   }
-
-  // 对密码进行加密
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  // 使用UUID生成唯一的用户id
-  const newUser = {
-    id: uuidv4(),
-    username,
-    password: hashedPassword,
-    role: "user",
-  };
-  users.push(newUser);
-
-  // 写入文件
-  writeDataToFile("users.json", users);
-
-  res
-    .status(201)
-    .json({ success: true, message: "注册成功", userId: newUser.id });
 });
 
 // 登录路由
@@ -121,74 +153,215 @@ app.post("/login", async (req, res) => {
   let { username, password } = req.body;
   username = String(username);
   password = String(password);
+
   console.log(
-    `后端拿到的登陆的账号密码 ${
+    `从前端拿到的登陆的账号密码 ${JSON.stringify(
       req.body
-    } 账号 ${username} ${typeof username}  密码 ${password} ${typeof password}`
+    )} 账号 ${username} 密码 ${password}`
   );
-  const users = readDataFromFile("users.json");
+  try {
+    const db = client.db(DB_NAME);
+    const usersCollection = db.collection("users");
 
-  // 查找用户
-  const user = users.find((u) => u.username === username);
-  if (!user) {
-    return res
-      .status(401)
-      .json({ success: false, message: "用户名或密码不正确" });
+    // 查找用户
+    const user = await usersCollection.findOne({ username });
+    if (!user) {
+      console.log("用户名或密码不正确");
+      return res
+        .status(401)
+        .json({ success: false, message: "用户名或密码不正确" });
+    }
+
+    // 验证密码
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      console.log("用户名或密码不正确");
+      return res
+        .status(401)
+        .json({ success: false, message: "用户名或密码不正确" });
+    }
+
+    // 生成JWT
+    const token = jwt.sign(
+      { userId: user.id, username: user.username },
+      SECRET_KEY,
+      { expiresIn: "1h" }
+    );
+
+    console.log("登录成功");
+    // 返回成功响应和JWT
+    res.json({
+      success: true,
+      message: "登录成功",
+      token: token,
+      role: user.role,
+    });
+  } catch (error) {
+    console.error("登录失败:", error);
+    res.status(500).json({ success: false, message: "登录失败" });
   }
-
-  // 验证密码
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    return res
-      .status(401)
-      .json({ success: false, message: "用户名或密码不正确" });
-  }
-
-  // 生成JWT
-  const token = jwt.sign(
-    { userId: user.id, username: user.username },
-    SECRET_KEY,
-    { expiresIn: "1h" }
-  );
-
-  // 返回成功响应和JWT
-  res.json({
-    success: true,
-    message: "登录成功",
-    token: token,
-    role: user.role,
-  });
 });
 
-// 获取用户列表的接口
-app.get("/people", (req, res) => {
-  const users = readDataFromFile("users.json");
-  // 返回除密码外的用户信息
-  const usersInfo = users.map(({ password, ...rest }) => rest);
-  res.json({ success: true, data: usersInfo });
+// // 注册路由
+// app.post("/register", async (req, res) => {
+//   let { username, password } = req.body;
+//   username = String(username);
+//   password = String(password);
+//   console.log(
+//     `后端拿到的注册的账号密码 ${
+//       req.body
+//     } 账号 ${username} ${typeof username}  密码 ${password} ${typeof password}`
+//   );
+
+//   const users = readDataFromFile("users.json");
+
+//   // 检查用户是否已存在
+//   const userExists = users.some((user) => user.username === username);
+//   if (userExists) {
+//     return res.status(400).json({ success: false, message: "用户已存在" });
+//   }
+
+//   // 对密码进行加密
+//   const hashedPassword = await bcrypt.hash(password, 10);
+
+//   // 使用UUID生成唯一的用户id
+//   const newUser = {
+//     id: uuidv4(),
+//     username,
+//     password: hashedPassword,
+//     role: "user",
+//   };
+//   users.push(newUser);
+
+//   // 写入文件
+//   writeDataToFile("users.json", users);
+
+//   res
+//     .status(201)
+//     .json({ success: true, message: "注册成功", userId: newUser.id });
+// });
+
+// // 登录路由
+// app.post("/login", async (req, res) => {
+//   let { username, password } = req.body;
+//   username = String(username);
+//   password = String(password);
+//   console.log(
+//     `后端拿到的登陆的账号密码 ${
+//       req.body
+//     } 账号 ${username} ${typeof username}  密码 ${password} ${typeof password}`
+//   );
+//   const users = readDataFromFile("users.json");
+
+//   // 查找用户
+//   const user = users.find((u) => u.username === username);
+//   if (!user) {
+//     return res
+//       .status(401)
+//       .json({ success: false, message: "用户名或密码不正确" });
+//   }
+
+//   // 验证密码
+//   const isMatch = await bcrypt.compare(password, user.password);
+//   if (!isMatch) {
+//     return res
+//       .status(401)
+//       .json({ success: false, message: "用户名或密码不正确" });
+//   }
+
+//   // 生成JWT
+//   const token = jwt.sign(
+//     { userId: user.id, username: user.username },
+//     SECRET_KEY,
+//     { expiresIn: "1h" }
+//   );
+
+//   // 返回成功响应和JWT
+//   res.json({
+//     success: true,
+//     message: "登录成功",
+//     token: token,
+//     role: user.role,
+//   });
+// });
+
+// // 获取用户列表的接口
+// app.get("/people", (req, res) => {
+//   const users = readDataFromFile("users.json");
+//   // 返回除密码外的用户信息
+//   const usersInfo = users.map(({ password, ...rest }) => rest);
+//   res.json({ success: true, data: usersInfo });
+// });
+
+// 获取用户列表的接口（从 MongoDB 中获取）
+app.get("/people", async (req, res) => {
+  try {
+    const db = client.db(DB_NAME);
+    const usersCollection = db.collection("users");
+
+    // 查询所有管理员的信息
+    const users = await usersCollection.find().toArray();
+
+    // 返回除密码外的管理员信息
+    const adminsInfo = users.map(({ password, ...rest }) => rest);
+    res.json({ success: true, data: adminsInfo });
+  } catch (error) {
+    console.error("获取管理员列表失败:", error);
+    res.status(500).json({ success: false, message: "获取管理员列表失败" });
+  }
 });
 
-// 分配角色的接口
-app.post("/assign-role", (req, res) => {
+// 分配角色的接口（从 MongoDB 中更新）
+app.post("/assign-role", async (req, res) => {
   const { userId, role } = req.body;
-  let users = readDataFromFile("users.json");
 
-  const userIndex = users.findIndex((user) => user.id === userId);
-  if (userIndex === -1) {
-    console.log(`分配的角色不存在 ${password} ${typeof password}`);
-    return res.status(404).json({ success: false, message: "用户不存在" });
+  try {
+    const db = client.db(DB_NAME);
+    const usersCollection = db.collection("users");
+
+    // 查找并更新用户角色
+    const result = await usersCollection.updateOne(
+      { id: userId },
+      { $set: { role: role } }
+    );
+
+    // 检查是否找到并更新了用户
+    if (result.matchedCount === 0) {
+      console.log(`分配的角色不存在 ${userId}`);
+      return res.status(404).json({ success: false, message: "用户不存在" });
+    }
+
+    console.log(`分配的角色 ${userId} 为角色 ${role}`);
+    res.json({ success: true, message: "角色分配成功" });
+  } catch (error) {
+    console.error("分配角色失败:", error);
+    res.status(500).json({ success: false, message: "角色分配失败" });
   }
-  console.log(`分配的角色 ${userId} 为角色 ${role}`);
-  // 更新用户角色
-  users[userIndex].role = role;
-  writeDataToFile("users.json", users);
-
-  res.json({ success: true, message: "角色分配成功" });
 });
 
+
+// // 分配角色的接口
+// app.post("/assign-role", (req, res) => {
+//   const { userId, role } = req.body;
+//   let users = readDataFromFile("users.json");
+
+//   const userIndex = users.findIndex((user) => user.id === userId);
+//   if (userIndex === -1) {
+//     console.log(`分配的角色不存在 ${password} ${typeof password}`);
+//     return res.status(404).json({ success: false, message: "用户不存在" });
+//   }
+//   console.log(`分配的角色 ${userId} 为角色 ${role}`);
+//   // 更新用户角色
+//   users[userIndex].role = role;
+//   writeDataToFile("users.json", users);
+
+//   res.json({ success: true, message: "角色分配成功" });
+// });
+
+// 获取所有游记的接口
 app.get("/all-travel-data", (req, res) => {
   const allData = readDataFromFile("totalTravelData.json");
-
+  console.log("前端请求所有的游记数据");
   // 提取所需的字段
   const requiredData = allData.map(
     ({
