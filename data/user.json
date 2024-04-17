@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "username": "123",
+    "password": "$2b$10$zS88KsSWbOeE0pU0Io5Iiu8wmR8VbqR0qHSC72CcZFKhxYtE.wPHO",
+    "avatar": "images/avatar1.png",
+    "likeNote": [],
+    "saveNote": [],
+    "followUser": []
+  },
+  {
+    "id": 2,
+    "username": "1234",
+    "password": "$2b$10$VOg3IcQi.2U7oNVXYTy8ouv9T5JpThBoH2ySpixr7dQl.Pnj2h6NK",
+    "avatar": "images/avatar1.png",
+    "likeNote": [],
+    "saveNote": [],
+    "followUser": [
+      "云山集"
+    ]
+  },
+  {
+    "id": 3,
+    "username": "admin",
+    "password": "$2b$10$7jy9bN4pMGuEVoSpHU5ULO75JNVEMKI81L0bB3SnX18KGPkaQ.ggW",
+    "avatar": "images/avatar1.png",
+    "likeNote": [],
+    "saveNote": [],
+    "followUser": []
+  }
+]
