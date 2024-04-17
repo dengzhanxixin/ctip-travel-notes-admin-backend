@@ -1,0 +1,65 @@
+[
+  {
+    "cityName": "上海",
+    "cityID": 2,
+    "eName": "SHANGHAI",
+    "photoCount": "66525张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100e0h0000008rp39A12F_D_750_600.jpg"
+  },
+  {
+    "cityName": "北京",
+    "cityID": 1,
+    "eName": "BEIJING",
+    "photoCount": "65355张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100a0g00000087qb8E7CE_D_750_600.jpg"
+  },
+  {
+    "cityName": "广州",
+    "cityID": 152,
+    "eName": "GUANGZHOU",
+    "photoCount": "21258张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100c180000014rkpq4C68_D_750_600.jpg"
+  },
+  {
+    "cityName": "杭州",
+    "cityID": 14,
+    "eName": "HANGZHOU",
+    "photoCount": "19203张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100h180000013qm0m8FCA_D_750_600.jpg"
+  },
+  {
+    "cityName": "成都",
+    "cityID": 104,
+    "eName": "CHENGDU",
+    "photoCount": "13612张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100r1f000001gon9mBC5D_D_750_600.jpg"
+  },
+  {
+    "cityName": "南京",
+    "cityID": 9,
+    "eName": "NANJING",
+    "photoCount": "20356张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/10070y000000mksq823D9_D_750_600.jpg"
+  },
+  {
+    "cityName": "西安",
+    "cityID": 7,
+    "eName": "XI'AN",
+    "photoCount": "18296张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/0106m120004eks4oyF624_D_750_600.jpg"
+  },
+  {
+    "cityName": "重庆",
+    "cityID": 158,
+    "eName": "CHONGQING",
+    "photoCount": "16039张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/100u1c000001dbc8s0A2E_D_750_600.jpg"
+  },
+  {
+    "cityName": "深圳",
+    "cityID": 26,
+    "eName": "SHENZHEN",
+    "photoCount": "9804张美图",
+    "coverImage": "https://dimg04.c-ctrip.com/images/10051f000001gsu9xBA0E_D_750_600.jpg"
+  }
+]

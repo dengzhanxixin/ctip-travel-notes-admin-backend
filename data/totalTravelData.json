@@ -41,12 +41,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "东郊记忆"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["东郊记忆"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -198,8 +194,7 @@
         "isHost": false,
         "visibleStatus": 0
       }
-    },
-    "reason": "33"
+    }
   },
   {
     "id": "33332909",
@@ -242,12 +237,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "北京左庭上院酒店"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["北京左庭上院酒店"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -351,8 +342,7 @@
         "isHost": false,
         "visibleStatus": 0
       }
-    },
-    "reason": "000"
+    }
   },
   {
     "id": "34142970",
@@ -393,14 +383,9 @@
     "showvideoicon": "0",
     "clientAuth": "D8D75B5CC24AAC7449BD63916655FC7A5987006E42D2D4BECA67D4BE5B7C899A",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me5i12000dh8sc2iD8F5_D_450_600_R5_Q80.jpg",
-    "isChecked": 3,
+    "isChecked": 1,
     "detail": {
-      "districtPoiCollect": {
-        "poiNames": [],
-        "districtNames": [
-          "广州"
-        ]
-      },
+      "districtPoiCollect": { "poiNames": [], "districtNames": ["广州"] },
       "images": [
         {
           "id": 1068025619,
@@ -543,15 +528,11 @@
     "showvideoicon": "0",
     "clientAuth": "22B818971B3E933B521487165AEB75E2",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me1l12000dh8oqym9600_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "龙椅山植物园"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["龙椅山植物园"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -695,15 +676,11 @@
     "showvideoicon": "0",
     "clientAuth": "95521FA470498A3F139C1E9D1E99CC5E",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me5612000dhc6yz92169_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "莲花山旅游区"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["莲花山旅游区"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -832,15 +809,11 @@
     "showvideoicon": "0",
     "clientAuth": "DBBEF95BD31E8F081047E519FC57DE6B",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me0u12000cw57c9n22FD_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "胜利电影院"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["胜利电影院"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -1017,15 +990,11 @@
     "showvideoicon": "0",
     "clientAuth": "79366652002A9A3D329B749802DA17CA",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me2712000d39ms8i42B0_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "蓁豐道 BIRD HUT"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["蓁豐道 BIRD HUT"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -1177,15 +1146,11 @@
     "showvideoicon": "0",
     "clientAuth": "3CFC1080151BA53E44E0540C39057C49",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me0k12000bf4kmxt18A4_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "上海欢乐谷"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["上海欢乐谷"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -1313,15 +1278,11 @@
     "showvideoicon": "0",
     "clientAuth": "95521FA470498A3F139C1E9D1E99CC5E",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me2n12000dgewltf12DF_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "森林海嬉水乐园"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["森林海嬉水乐园"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -1433,15 +1394,11 @@
     "showvideoicon": "0",
     "clientAuth": "D471499B9471598C98ECAF1C89C3B620",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me0z12000dfz8dri9D6B_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "麓湖生态城"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["麓湖生态城"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -1633,15 +1590,11 @@
     "showvideoicon": "0",
     "clientAuth": "369B6556067E9E93A3FB9BD8D8B853B4",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me1812000dh7rnel216B_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "棠湖公园"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["棠湖公园"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -1834,15 +1787,11 @@
     "showvideoicon": "0",
     "clientAuth": "0DFA56CDAA2391E26E3928CA55AB29CF",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me2k12000d3ymtx9E704_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "静安新业坊"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["静安新业坊"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -1986,15 +1935,11 @@
     "showvideoicon": "0",
     "clientAuth": "1DCA37628767F17DCFC29E93135C9DAA",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me6a12000c3x8wnq7A35_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "成都归年城市民宿（武侯祠天府广场店）"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["成都归年城市民宿（武侯祠天府广场店）"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -2131,15 +2076,11 @@
     "showvideoicon": "0",
     "clientAuth": "BF68E6397E80A04A3B34CDB764DF4C7D",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me1q12000dhcsvhb975E_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "成都官塘安麓酒店"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["成都官塘安麓酒店"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -2210,7 +2151,7 @@
       "summary": {
         "sourceType": 126,
         "title": "自驾赏花｜成都的春天！是一万次的春和景明啊！",
-        "content": "<ctag id=\"528532\" type=\"4\" businesstype=\"3\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532&isMini=2\" >#月度专项计划</ctag> \n朋友圈都被问爆了，都以为我去喜洲了…\n上次夏天来这里，是绿油油的稻田！\n这次来是金灿灿的油菜花，真的太好拍了吧！\n. 📍官塘新村\n🚇6号线松林站，还要打车或者三轮车\n🚗成都市区出发1h\n🧭官塘新村游客中心\n.\n村里有许多非遗的艺术馆，\n但是大部分五点就关门了…\n有茶馆🍵，稻田咖啡☕️，餐厅🍴和民宿…\n我下午三点到的时候基本没停车的位置了。\n现在油菜花已经很高了，带无人机更加～\n.\n喜欢记得留下小心心❤️\n也期待大家的绝美照片，\n有问题记得留言，看到就会回复。\n咱们下期见~\n <ctag id=\"574538\" type=\"4\" businesstype=\"1\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538&isMini=2\" >#春日赏花图鉴</ctag> <ctag id=\"627796\" type=\"4\" businesstype=\"10\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796&isMini=2\" >#成都赏花指南</ctag> <ctag id=\"73738\" type=\"4\" businesstype=\"2\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738&isMini=2\" >#窗外风景</ctag> <ctag id=\"12773\" type=\"4\" businesstype=\"1\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773&isMini=2\" >#值得去的古镇古村</ctag>",
+        "content": "<ctag id=\"528532\" type=\"4\" businesstype=\"3\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=528532&isMini=2\" >#月度专项计划</ctag> \n朋友圈都被问爆了，都以为我去喜洲了…\n上次夏天来这里，是绿油油的稻田！\n这次来是金灿灿的油菜花，真的太好拍了吧！\n.📍官塘新村\n🚇6号线松林站，还要打车或者三轮车\n🚗成都市区出发1h\n🧭官塘新村游客中心\n.\n村里有许多非遗的艺术馆，\n但是大部分五点就关门了…\n有茶馆🍵，稻田咖啡☕️，餐厅🍴和民宿…\n我下午三点到的时候基本没停车的位置了。\n现在油菜花已经很高了，带无人机更加～\n.\n喜欢记得留下小心心❤️\n也期待大家的绝美照片，\n有问题记得留言，看到就会回复。\n咱们下期见~\n <ctag id=\"574538\" type=\"4\" businesstype=\"1\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=574538&isMini=2\" >#春日赏花图鉴</ctag> <ctag id=\"627796\" type=\"4\" businesstype=\"10\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=627796&isMini=2\" >#成都赏花指南</ctag> <ctag id=\"73738\" type=\"4\" businesstype=\"2\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=73738&isMini=2\" >#窗外风景</ctag> <ctag id=\"12773\" type=\"4\" businesstype=\"1\" h5url=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773\" appurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773\" wxurl=\"https://m.ctrip.com/webapp/you/tripshoot/paipai/topicPage/topicPage?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&autoawaken=close&popup=close&topicId=12773&isMini=2\" >#值得去的古镇古村</ctag>",
         "publishTime": "/Date(1711163464000+0800)/",
         "firstPublishTime": "/Date(1711163463000+0800)/",
         "publishDisplayTime": "3天前",
@@ -2276,16 +2217,9 @@
     "showvideoicon": "0",
     "clientAuth": "D2464E7F542C94260BF39890105D5EB8",
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me1i12000dh02ywx3DB6_D_450_600_R5_Q80.jpg",
-    "isChecked": 0,
+    "isChecked": 1,
     "detail": {
-      "districtPoiCollect": {
-        "poiNames": [
-          "市桥"
-        ],
-        "districtNames": [
-          "广州"
-        ]
-      },
+      "districtPoiCollect": { "poiNames": ["市桥"], "districtNames": ["广州"] },
       "images": [
         {
           "id": 1067277738,
@@ -2432,12 +2366,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "海珠国家湿地公园"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["海珠国家湿地公园"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -2568,12 +2498,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "西姆善居成都春熙路天府广场地铁站酒店"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["西姆善居成都春熙路天府广场地铁站酒店"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -2720,12 +2646,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "上海迪士尼度假区"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["上海迪士尼度假区"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -2896,12 +2818,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "上海儿童博物馆"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["上海儿童博物馆"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -3128,12 +3046,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "中国科学院华南国家植物园"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["中国科学院华南国家植物园"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -3281,12 +3195,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "鲜鱼口街"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["鲜鱼口街"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -3434,12 +3344,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "白水寨嘉华温泉"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["白水寨嘉华温泉"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -3634,12 +3540,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "雁栖湖"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["雁栖湖"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -3793,12 +3695,7 @@
     "img_Intrinsic": "https://dimg04.c-ctrip.com/images/1me1w12000c040r5p8FA8_D_450_600_R5_Q80.jpg",
     "isChecked": 1,
     "detail": {
-      "districtPoiCollect": {
-        "poiNames": [],
-        "districtNames": [
-          "上海"
-        ]
-      },
+      "districtPoiCollect": { "poiNames": [], "districtNames": ["上海"] },
       "images": [
         {
           "id": 930329666,
@@ -3944,12 +3841,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "北京杜莎夫人蜡像馆"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["北京杜莎夫人蜡像馆"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -4104,12 +3997,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "橙芷·秋果酒店（北京天安门广场店）"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["橙芷·秋果酒店（北京天安门广场店）"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -4264,12 +4153,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "中国铁道博物馆正阳门馆"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["中国铁道博物馆正阳门馆"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -4440,12 +4325,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "十三陵水库"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["十三陵水库"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -4592,12 +4473,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "陈麻婆豆腐"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["陈麻婆豆腐"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -4744,12 +4621,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "上海客莱福诺富特酒店"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["上海客莱福诺富特酒店"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -4976,12 +4849,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "邓山村"
-        ],
-        "districtNames": [
-          "广州"
-        ]
+        "poiNames": ["邓山村"],
+        "districtNames": ["广州"]
       },
       "images": [
         {
@@ -5200,12 +5069,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "磁浮列车"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["磁浮列车"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -5425,12 +5290,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "天府绿道"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["天府绿道"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
@@ -5578,12 +5439,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "北京杜莎夫人蜡像馆"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["北京杜莎夫人蜡像馆"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -5802,12 +5659,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "北京左庭上院酒店"
-        ],
-        "districtNames": [
-          "北京"
-        ]
+        "poiNames": ["北京左庭上院酒店"],
+        "districtNames": ["北京"]
       },
       "images": [
         {
@@ -5994,12 +5847,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "胜利电影院"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["胜利电影院"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -6163,12 +6012,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "朵云书院(滴水湖店)"
-        ],
-        "districtNames": [
-          "上海"
-        ]
+        "poiNames": ["朵云书院(滴水湖店)"],
+        "districtNames": ["上海"]
       },
       "images": [
         {
@@ -6323,12 +6168,8 @@
     "isChecked": 1,
     "detail": {
       "districtPoiCollect": {
-        "poiNames": [
-          "滨江公园"
-        ],
-        "districtNames": [
-          "成都"
-        ]
+        "poiNames": ["滨江公园"],
+        "districtNames": ["成都"]
       },
       "images": [
         {
