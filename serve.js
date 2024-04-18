@@ -22,7 +22,7 @@ const SECRET_KEY = "ctrip_yhr_secret_key"; // 用于JWT加密的密钥，应保�
 const { v4: uuidv4 } = require("uuid");
 const { MongoClient } = require("mongodb");
 const MONGO_URI = "mongodb://localhost:27017"; // MongoDB连接URI
-const DB_NAME = "yhr_mongoDB_database"; // 数据库名称
+const DB_NAME = "yhr_mongoDB"; // 数据库名称
 // 连接MongoDB数据库
 const client = new MongoClient(MONGO_URI);
 
@@ -86,7 +86,7 @@ connectToDatabase(); // 连接数据库
 const corsOptions = {
   // origin: "*",
   // origin: "http://localhost:3000",
-  origin: ["http://114.55.113.21:2000", "http://114.55.113.21:3000"], // 允许这些域进行跨域请求
+  origin: ["http://localhost:3000","http://114.55.113.21:2000", "http://114.55.113.21:3000"], // 允许这些域进行跨域请求
   credentials: true, // 允许跨域请求携带cookies
 };
 app.use(CORS(corsOptions));
@@ -172,12 +172,18 @@ app.post("/register", async (req, res) => {
     // 对密码进行加密
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // 判断用户名并设置角色
+    let role = "user";
+    if (username === "admin" || username === "ctrip") {
+      role = "super_admin";
+    }
+
     // 使用UUID生成唯一的用户id
     const newUser = {
       id: uuidv4(),
       username,
       password: hashedPassword,
-      role: "user",
+      role: role,
     };
 
     // 插入新用户到数据库
@@ -237,7 +243,7 @@ app.post("/login", async (req, res) => {
     // 设置HttpOnly Cookie
     res.cookie("token", token, {
       httpOnly: true, // JavaScript无法访问Cookie
-      secure: true, // 仅通过HTTPS发送
+      secure: false, // 是否通过HTTPS发送
       maxAge: 3600000, // Cookie有效期，与token的过期时间相同
     });
     // 返回成功响应和JWT
