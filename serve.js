@@ -39,6 +39,37 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
+// 身份验证
+function authenticate(req, res, next) {
+  console.log("后端权限验证");
+  const token = req.cookies.token;
+  if (!token) {
+    console.log("后端权限验证结果:No token provided");
+    return res.status(403).json({ message: "No token provided." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, SECRET_KEY);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    console.log("后端权限验证结果:Invalid token.");
+    return res.status(401).json({ message: "Invalid token." });
+  }
+}
+// 权限验证
+function checkSuperAdmin(req, res, next) {
+  console.log("superadmin验证");
+  if (req.user.role === "super_admin") {
+    console.log("superadmin验证成功，调用接口");
+    next();
+  } else {
+    console.log("superadmin验证失败，不是super_admin");
+    return res
+      .status(403)
+      .json({ message: "You do not have permission to access this resource." });
+  }
+}
 
 // 连接MongoDB数据库
 async function connectToDatabase() {
@@ -53,9 +84,10 @@ async function connectToDatabase() {
 connectToDatabase(); // 连接数据库
 
 const corsOptions = {
-  origin: "*",
+  // origin: "*",
   // origin: "http://localhost:3000",
-  credentials: true,
+  origin: ["http://114.55.113.21:2000", "http://114.55.113.21:3000"], // 允许这些域进行跨域请求
+  credentials: true, // 允许跨域请求携带cookies
 };
 app.use(CORS(corsOptions));
 app.use(cookieParser());
@@ -105,10 +137,14 @@ app.get("/menus", async (req, res) => {
     ];
 
     // 直接返回菜单数据
-    res.status(200).json({ meta: { status: 200, msg: "获取菜单列表成功" }, data: menus });
+    res
+      .status(200)
+      .json({ meta: { status: 200, msg: "获取菜单列表成功" }, data: menus });
   } catch (error) {
     // 如果有错误，返回500状态码和错误信息
-    res.status(500).send({ meta: { status: 500, msg: "获取菜单列表失败" }, error: error });
+    res
+      .status(500)
+      .send({ meta: { status: 500, msg: "获取菜单列表失败" }, error: error });
   }
 });
 
@@ -117,7 +153,11 @@ app.post("/register", async (req, res) => {
   let { username, password } = req.body;
   username = String(username);
   password = String(password);
-  console.log(`从前端拿到的注册的账号密码 ${JSON.stringify(req.body)} 账号 ${username} 密码 ${password}`);
+  console.log(
+    `从前端拿到的注册的账号密码 ${JSON.stringify(
+      req.body
+    )} 账号 ${username} 密码 ${password}`
+  );
   try {
     const db = client.db(DB_NAME);
     const usersCollection = db.collection("users");
@@ -144,7 +184,9 @@ app.post("/register", async (req, res) => {
     await usersCollection.insertOne(newUser);
 
     console.log("注册成功");
-    res.status(201).json({ success: true, message: "注册成功", userId: newUser.id });
+    res
+      .status(201)
+      .json({ success: true, message: "注册成功", userId: newUser.id });
   } catch (error) {
     console.error("注册失败:", error);
     res.status(500).json({ success: false, message: "注册失败" });
@@ -157,7 +199,11 @@ app.post("/login", async (req, res) => {
   username = String(username);
   password = String(password);
 
-  console.log(`从前端拿到的登陆的账号密码 ${JSON.stringify(req.body)} 账号 ${username} 密码 ${password}`);
+  console.log(
+    `从前端拿到的登陆的账号密码 ${JSON.stringify(
+      req.body
+    )} 账号 ${username} 密码 ${password}`
+  );
   try {
     const db = client.db(DB_NAME);
     const usersCollection = db.collection("users");
@@ -166,26 +212,40 @@ app.post("/login", async (req, res) => {
     const user = await usersCollection.findOne({ username });
     if (!user) {
       console.log("用户名或密码不正确");
-      return res.status(401).json({ success: false, message: "用户名或密码不正确" });
+      return res
+        .status(401)
+        .json({ success: false, message: "用户名或密码不正确" });
     }
 
     // 验证密码
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       console.log("用户名或密码不正确");
-      return res.status(401).json({ success: false, message: "用户名或密码不正确" });
+      return res
+        .status(401)
+        .json({ success: false, message: "用户名或密码不正确" });
     }
 
     // 生成JWT
-    const token = jwt.sign({ userId: user.id, username: user.username }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jwt.sign(
+      { userId: user.id, username: user.username, role: user.role },
+      SECRET_KEY,
+      { expiresIn: "1h" }
+    );
 
     console.log("登录成功");
+    // 设置HttpOnly Cookie
+    res.cookie("token", token, {
+      httpOnly: true, // JavaScript无法访问Cookie
+      secure: true, // 仅通过HTTPS发送
+      maxAge: 3600000, // Cookie有效期，与token的过期时间相同
+    });
     // 返回成功响应和JWT
     res.json({
       success: true,
       message: "登录成功",
-      token: token,
-      role: user.role,
+      // token: token,
+      // role: user.role,
     });
   } catch (error) {
     console.error("登录失败:", error);
@@ -194,7 +254,7 @@ app.post("/login", async (req, res) => {
 });
 
 // 获取用户列表的接口（从 MongoDB 中获取）
-app.get("/people", async (req, res) => {
+app.get("/people", authenticate, async (req, res) => {
   try {
     const db = client.db(DB_NAME);
     const usersCollection = db.collection("users");
@@ -212,7 +272,7 @@ app.get("/people", async (req, res) => {
 });
 
 // 分配角色的接口（从 MongoDB 中更新）
-app.post("/assign-role", async (req, res) => {
+app.post("/assign-role", authenticate, checkSuperAdmin, async (req, res) => {
   const { userId, role } = req.body;
 
   try {
@@ -220,7 +280,10 @@ app.post("/assign-role", async (req, res) => {
     const usersCollection = db.collection("users");
 
     // 查找并更新用户角色
-    const result = await usersCollection.updateOne({ id: userId }, { $set: { role: role } });
+    const result = await usersCollection.updateOne(
+      { id: userId },
+      { $set: { role: role } }
+    );
 
     // 检查是否找到并更新了用户
     if (result.matchedCount === 0) {
@@ -237,21 +300,35 @@ app.post("/assign-role", async (req, res) => {
 });
 
 // 获取所有游记的接口
-app.get("/all-travel-data", (req, res) => {
+app.get("/all-travel-data", authenticate, (req, res) => {
   const allData = readDataFromFile("TravelData.json");
   console.log("前端请求所有的游记数据");
   const baseURL = "http://114.55.113.21/frontend/public"; // 指向公共图片目录的基础URL
   // 提取所需的字段
   const requiredData = allData.map(
-    ({ id, title, user, city, coverImg, isChecked, content, publishDisplayTime, images }) => {
+    ({
+      id,
+      title,
+      user,
+      city,
+      coverImg,
+      isChecked,
+      content,
+      publishDisplayTime,
+      images,
+    }) => {
       // 从 img 对象中提取所有的图片 URL
       const imgs = Object.values(images).map((imgDetail) => {
         // 检查是否是完整的 URL
-        return imgDetail.url.startsWith("http") ? imgDetail.url : `${baseURL}${imgDetail.url}`;
+        return imgDetail.url.startsWith("http")
+          ? imgDetail.url
+          : `${baseURL}${imgDetail.url}`;
       });
 
       // 对 coverImg 进行同样的处理
-      const fullCoverImg = coverImg.startsWith("http") ? coverImg : `${baseURL}${coverImg}`;
+      const fullCoverImg = coverImg.startsWith("http")
+        ? coverImg
+        : `${baseURL}${coverImg}`;
 
       return {
         id,
@@ -271,7 +348,7 @@ app.get("/all-travel-data", (req, res) => {
 });
 
 // 审核游记的接口
-app.post("/audit-travel", (req, res) => {
+app.post("/audit-travel", authenticate, (req, res) => {
   let { id, isChecked, checkReason } = req.body;
   isChecked = Number(isChecked); // 将 isChecked 转换为数字
   console.log("后端收到的数据", req.body);
@@ -283,7 +360,9 @@ app.post("/audit-travel", (req, res) => {
   if (dataIndex === -1) {
     console.log("没有找到对应游记");
     // 如果找不到，返回错误信息
-    return res.status(404).json({ success: false, message: "未找到对应的游记" });
+    return res
+      .status(404)
+      .json({ success: false, message: "未找到对应的游记" });
   }
 
   // 更新游记的审核状态和驳回理由
@@ -302,7 +381,7 @@ app.post("/audit-travel", (req, res) => {
 });
 
 // 删除游记的接口
-app.delete("/delete-travel/:id", (req, res) => {
+app.delete("/delete-travel/:id", authenticate, checkSuperAdmin, (req, res) => {
   const { id } = req.params; // 从请求URL中获取游记的ID
   console.log("后端收到的数据", req.params);
   let travelData = readDataFromFile("TravelData.json");
@@ -311,7 +390,9 @@ app.delete("/delete-travel/:id", (req, res) => {
   const dataIndex = travelData.findIndex((travel) => travel.id === id);
   if (dataIndex === -1) {
     console.log("没有找到对应游记");
-    return res.status(404).json({ success: false, message: "未找到对应的游记" });
+    return res
+      .status(404)
+      .json({ success: false, message: "未找到对应的游记" });
   }
 
   // 更新游记的审核状态和驳回理由
@@ -325,9 +406,10 @@ app.delete("/delete-travel/:id", (req, res) => {
 });
 
 // 用户系统
-
+// 用户注册
 app.post("/api/register", async (req, res) => {
-  const { username, password, avatar, likeNote, saveNote, followUser } = req.body;
+  const { username, password, avatar, likeNote, saveNote, followUser } =
+    req.body;
   if (!username || !password) {
     return res.status(400).json({ message: "需要用户名和密码" });
   }
@@ -380,9 +462,17 @@ app.post("/api/login", (req, res) => {
   bcrypt.compare(password, user.password, (err, result) => {
     if (result) {
       // 密码匹配，创建Token
-      const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, { expiresIn: "1h" });
+      const token = jwt.sign(
+        { id: user.id, username: user.username },
+        SECRET_KEY,
+        { expiresIn: "1h" }
+      );
       // 返回Token和用户信息（不包含密码）
-      res.json({ message: "登录成功", token, user: { ...user, password: undefined } });
+      res.json({
+        message: "登录成功",
+        token,
+        user: { ...user, password: undefined },
+      });
     } else {
       res.status(401).json({ message: "密码错误" });
     }
@@ -411,7 +501,9 @@ app.post("/api/avatar", (req, res) => {
   const userToUpdate = users.find((user) => user.username === username);
   if (userToUpdate) {
     // 更新用户的头像路径
-    userToUpdate.avatar = path.join("images", `${username}_avatar.jpg`).replace(/\\/g, "/");
+    userToUpdate.avatar = path
+      .join("images", `${username}_avatar.jpg`)
+      .replace(/\\/g, "/");
 
     // 将更新后的用户列表写回到 JSON 文件中
     fs.writeFileSync(dataPath, JSON.stringify(users, null, 2), "utf8");
@@ -432,11 +524,18 @@ app.post("/api/wxJssdk", async (req, res) => {
 
   try {
     const response1 = await axios.get(
-      "https://api.weixin.qq.com/cgi-bin/token?grant_type=" + grant_type + "&appid=" + appid + "&secret=" + secret
+      "https://api.weixin.qq.com/cgi-bin/token?grant_type=" +
+        grant_type +
+        "&appid=" +
+        appid +
+        "&secret=" +
+        secret
     );
     const access_token = response1.data.access_token;
     const response2 = await axios.get(
-      "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" + access_token + "&type=jsapi"
+      "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=" +
+        access_token +
+        "&type=jsapi"
     );
     const jsapi_ticket = response2.data.ticket;
 
